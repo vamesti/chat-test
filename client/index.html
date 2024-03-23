@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheets" href="/client/public/css/reset.css">
+    <link rel="stylesheets" href="/client/public/css/index.css">
+    <title>Chating</title>
+</head>
+<script type="module" src='/scripts/index.js'></script>
+
+<body>
+    <div class="chatbox">
+        <div class="profile">
+            <div class="profilePhoto">
+                <img width="50" height="50"
+                    src="https://avatars.githubusercontent.com/u/126414976?s=400&u=1c4b331eea9a9dff36af2947a57846bb873436db&v=4">
+            </div>
+            <div class="names">
+                <h3>Dave Fernandez</h3>
+                <h4>Escribiendo</h4>
+            </div>
+
+        </div>
+        <div class="textChat">
+
+        </div>
+        <form class="chatbaloon" name="chatbaloon">
+            <input name="textbox" type="text" placeholder="Write something ...">
+            <button type="submit">▶️</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<style>
+    :root {
+        color-scheme: dark ligth;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .chatbox {
+        display: grid;
+        grid-template-rows: 1fr 10fr 1fr;
+        height: 100%;
+        width: 300px;
+        margin: auto;
+        border: solid 1px gray;
+        box-sizing: border-box;
+    }
+
+    .textChat {
+        box-shadow: inset 0px 0px 10px 1px gray;
+        overflow-y: auto;
+        background-color: white;
+        grid-row: 2;
+        grid-area: auto;
+        box-sizing: border-box;
+    }
+
+    .chatbaloon {
+        height: auto;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .chatbaloon>input {
+        width: 100%;
+        grid-column: 1;
+        padding: 10px;
+    }
+
+    .chatbaloon>input::placeholder {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .chatbaloon>button {
+        grid-column: 2;
+    }
+
+    .profile {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 2fr 10fr;
+        background-color: rgb(33, 81, 147);
+        padding: 20px;
+        font-weight: 700;
+        align-content: center;
+    }
+
+    .profilePhoto {
+        display: grid;
+        align-content: center;
+        position: relative;
+        object-position: center;
+        border-radius: 50%;
+        background-color: red;
+        aspect-ratio: 1;
+    }
+
+    .profilePhoto>img {
+        border-radius: 50%;
+        margin: auto;
+        object-fit: cover;
+    }
+
+    .names>h3,
+    h4 {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .names>h4 {
+        font-size: 0.7rem;
+    }
+</style>

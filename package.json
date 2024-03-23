@@ -1,0 +1,21 @@
+{
+    "name": "chat-test",
+    "version": "1.0.0",
+    "description": "testing of technologys some socket.io | express | node | morgan for comunication in real time beetwen ser-cli",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "node  --watch ./server/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "[]"
+    ],
+    "author": "vamesti",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.19.1",
+        "morgan": "^1.10.0",
+        "socket.io": "^4.7.5"
+    }
+}
