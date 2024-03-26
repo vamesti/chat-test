@@ -8,7 +8,36 @@
     <link rel="stylesheets" href="/client/public/css/index.css">
     <title>Chating</title>
 </head>
-<script type="module" src='/scripts/index.js'></script>
+<script type="module">
+    import { io } from "https://cdn.socket.io/4.7.5/socket.io.esm.min.js";
+    /** @socket es la negociacion que se hacesde des la libreria Socket.io con el metodo io hacia el server, es decir la informacion que pas a al servidor desde el frontend, con auth puedo pasar las cabeceras necesarias*/
+    const socket = io({
+        auth: {
+            name: 'vamesti',
+            serverOffset: 0
+        }
+    });
+    const form = document.getElementById('chat');
+    const input = document.getElementById('write');
+    const messages = document.getElementById('messages');
+
+    socket.on('chat messages', (msg, serverOffset) => {
+
+        const msgBox = document.createElement('li');
+        msgBox.textContent = msg;
+        messages.append(msgBox);
+        socket.auth.serverOffset = serverOffset;
+    })
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (input.value) {
+            socket.emit('chat messages', input.value)
+            console.log(input.value)
+            input.value = "";
+        }
+    })
+</script>
 
 <body>
     <div class="chatbox">
@@ -24,10 +53,10 @@
 
         </div>
         <div class="textChat">
-
+            <ul id="messages"></ul>
         </div>
-        <form class="chatbaloon" name="chatbaloon">
-            <input name="textbox" type="text" placeholder="Write something ...">
+        <form id="chat" class="chatbaloon" name="chatbaloon">
+            <input id="write" name="textbox" type="text" placeholder="Write something ...">
             <button type="submit">▶️</button>
         </form>
     </div>
@@ -63,7 +92,7 @@
     .textChat {
         box-shadow: inset 0px 0px 10px 1px gray;
         overflow-y: auto;
-        background-color: white;
+        /* background-color: white; */
         grid-row: 2;
         grid-area: auto;
         box-sizing: border-box;
